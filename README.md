@@ -10,12 +10,16 @@ git pull
 if all change
 ```
 git add .
-git commit -m "Description of your change"
-git push
 ```
 if only a specific file
 ```
 git add {your file}
+```
+### Commit with a message
+```
 git commit -m "Description of your change"
+```
+### When you're done with all your change
+```
 git push
 ```
