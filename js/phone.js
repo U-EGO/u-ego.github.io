@@ -16,10 +16,8 @@ scene.add( camera );
 
 // create an html page to be displayed on a plane
 const html = document.getElementById('phoneHTML');
-html.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+html.style.backgroundColor = 'rgba(0,127,127)';
 const cssObj = new CSS3DObject( html );
-const object = new THREE.Object3D();
-
 
 let loadedModel;
 const gltfLoader = new GLTFLoader();
@@ -81,4 +79,5 @@ animate();
 
 function logic() {
   loadedModel.scene.rotation.y += 0.01;
+  document.getElementById("phoneHTML").style.background = "rgba("+(Math.random()*256)+","+(Math.random()*256)+"," + ( Math.random() * 256 ) + ")";
 }
