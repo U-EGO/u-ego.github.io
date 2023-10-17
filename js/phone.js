@@ -15,9 +15,19 @@ camera.add( pointLight );
 scene.add( camera );
 
 // create an html page to be displayed on a plane
-const html = document.getElementById('phoneHTML');
+const html = document.createElement('div');
 html.style.backgroundColor = 'rgba(0,127,127)';
+const phoneCamera = document.createElement('div');
+phoneCamera.style.backgroundColor = 'rgba(0,0,0)';
 const cssObj = new CSS3DObject( html );
+const cssCamObj = new CSS3DObject( phoneCamera );
+const phoneHtml = document.getElementById("phoneHTML");
+phoneHtml.style.backgroundColor = 'rgba(0,255,0)';
+const cssHtml = new CSS3DObject( phoneHtml );
+cssObj.add(cssCamObj);
+cssObj.add(cssHtml);
+
+cssCamObj.position.set(0, 280, 2);
 
 let loadedModel;
 const gltfLoader = new GLTFLoader();
@@ -29,9 +39,21 @@ gltfLoader.load( 'img/models/scene.gltf', function ( gltf ) {
   // rotate the model 90 degrees
   loadedModel.scene.rotation.y = Math.PI / 2;
   loadedModel.scene.add(cssObj);
+  cssObj.element.style.height = loadedModel.scene.scale.y * 11900 + 'px';
+  cssObj.element.style.width = loadedModel.scene.scale.x * 5700 + 'px';
+  cssObj.element.style.backgroundColor = 'rgba(0,127,127)';
+
+  cssHtml.element.style.width = loadedModel.scene.scale.x * 5200 + 'px';
+  cssHtml.element.style.height = loadedModel.scene.scale.y * 11100 + 'px';
+
+  cssCamObj.element.style.width = loadedModel.scene.scale.x * 5700 * 0.5+ 'px'
+  cssCamObj.element.style.height = loadedModel.scene.scale.y * 11900 * 0.05 + 'px';
 });
 
-cssObj.position.set(0, 0, -20);
+cssHtml.position.set(0, -10, 1);
+cssObj.position.set(0, 0, -15);
+cssObj.element.style.borderRadius = '30px';
+cssCamObj.element.style.borderRadius = '30px';
 cssObj.rotateY(Math.PI);
 
 let renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -61,11 +83,13 @@ function animate() {
 
     // if loadedModel is in front of cssObj, then hide cssObj
     if (vector.z+0.002 > vector2.z) {
-      // cssObj.element.style.opacity = '1';
-      cssRenderer.domElement.style.opacity = '1';
+      cssObj.element.style.opacity = '1';
+      cssCamObj.element.style.opacity = '1';
+      // cssRenderer.domElement.style.opacity = '1';
     } else {
-      // cssObj.element.style.opacity = '0';
-      cssRenderer.domElement.style.opacity = '0';
+      cssObj.element.style.opacity = '0';
+      cssCamObj.element.style.opacity = '0';
+      // cssRenderer.domElement.style.opacity = '0';
     }  
 
     logic();
@@ -79,5 +103,5 @@ animate();
 
 function logic() {
   loadedModel.scene.rotation.y += 0.01;
-  document.getElementById("phoneHTML").style.background = "rgba("+(Math.random()*256)+","+(Math.random()*256)+"," + ( Math.random() * 256 ) + ")";
+  // document.getElementById("phoneHTML").style.background = "rgba("+(Math.random()*256)+","+(Math.random()*256)+"," + ( Math.random() * 256 ) + ")";
 }
