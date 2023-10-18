@@ -1,6 +1,6 @@
 # Clash App website
 
-<a href="https://www.figma.com/file/70vucDgLiOFrnq3tFaoIvo/Clash?type=design&node-id=0%3A1&mode=design&t=ZA4DjFpSnZxQVKXW-1">Figma<\a>
+<a href="https://www.figma.com/file/70vucDgLiOFrnq3tFaoIvo/Clash?type=design&node-id=0%3A1&mode=design&t=ZA4DjFpSnZxQVKXW-1">Figma</a>
 
 ## Impotant to pull the project before editing to get the latest changes
 ```
