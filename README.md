@@ -1,6 +1,6 @@
 # Clash App website
 
-## Impotant pull the project before editing to get the latest change
+## Impotant to pull the project before editing to get the latest changes
 ```
 git pull
 ```
@@ -19,7 +19,7 @@ git add {your file}
 ```
 git commit -m "Description of your change"
 ```
-### When you're done with all your change
+### When you're done making changes
 ```
 git push
 ```
