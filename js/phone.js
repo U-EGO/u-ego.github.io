@@ -85,10 +85,12 @@ function animate() {
     if (vector.z+0.002 > vector2.z) {
       cssObj.element.style.opacity = '1';
       cssCamObj.element.style.opacity = '1';
+      cssHtml.element.style.opacity = '1';
       // cssRenderer.domElement.style.opacity = '1';
     } else {
       cssObj.element.style.opacity = '0';
       cssCamObj.element.style.opacity = '0';
+      cssHtml.element.style.opacity = '0';
       // cssRenderer.domElement.style.opacity = '0';
     }  
 
