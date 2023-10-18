@@ -107,3 +107,7 @@ function logic() {
   loadedModel.scene.rotation.y += 0.01;
   // document.getElementById("phoneHTML").style.background = "rgba("+(Math.random()*256)+","+(Math.random()*256)+"," + ( Math.random() * 256 ) + ")";
 }
+
+document.getElementById("phoneButton").addEventListener("click", function() {
+  alert("button clicked");
+});
