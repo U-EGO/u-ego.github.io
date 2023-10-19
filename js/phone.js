@@ -67,7 +67,7 @@ document.getElementById("container").appendChild( renderer.domElement );
 let cssRenderer = new CSS3DRenderer();
 cssRenderer.setSize( window.innerWidth, window.innerHeight );
 cssRenderer.domElement.id = "renderer";
-cssRenderer.domElement.className = "renderer";
+cssRenderer.domElement.className = "cssrenderer";
 document.getElementById("container").appendChild( cssRenderer.domElement );
 
 function animate() {
