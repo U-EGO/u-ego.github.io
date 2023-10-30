@@ -1,0 +1,34 @@
+Overall Look and Feel of Clash
+==============================
+The Overall look of Clash should be in a cartoon style with pastel color
+We use manly flat desing with a bit of depth.
+The website should be responsive and work on all devices.
+It should also be calm and not to flashy.
+
+Colours
+=======
+Colours should be pastel.
+
+#D7FFFF
+#FFCFE4
+#FEBECF
+#CFACCD
+#CFF2D1
+#FFE1CD
+
+Iconography
+===========
+Icon with flat desing not too much detail.
+NO METAL TEXTURE
+
+Typography
+==========
+Will use Comic Neue from google fonts
+
+Links
+=====
+Links will not be underlined by default but when hover with the mouse.
+
+Buttons
+=======
+Buttons will be flat desing with a paralax effect in front of a hard shadow.
