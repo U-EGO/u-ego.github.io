@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 #container {
@@ -22,12 +23,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
+  /* interact throu it */
+  pointer-events: none;
 }
 
 .cssrenderer {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* change to 1 before the end so phone interation can work */
+  z-index: 1; /* change to 1 before the end so phone interation can work */
+  pointer-events: none;
 }
