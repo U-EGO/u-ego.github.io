@@ -70,8 +70,17 @@ cssRenderer.domElement.id = "renderer";
 cssRenderer.domElement.className = "cssrenderer";
 document.getElementById("container").appendChild( cssRenderer.domElement );
 
+let scrollTop = document.documentElement.scrollTop;
+
 function animate() {
   requestAnimationFrame( animate );
+  
+  scrollTop = document.documentElement.scrollTop;
+
+  // set the renderer to the scroll position
+  renderer.domElement.style.top = scrollTop + 'px';
+  cssRenderer.domElement.style.top = scrollTop + 'px';
+
   if (loadedModel) {
     // get the absolute position of cssObj
     let vector = new THREE.Vector3();
@@ -105,7 +114,6 @@ animate();
 
 function logic() {
   loadedModel.scene.rotation.y += 0.01;
-  // document.getElementById("phoneHTML").style.background = "rgba("+(Math.random()*256)+","+(Math.random()*256)+"," + ( Math.random() * 256 ) + ")";
 }
 
 document.getElementById("phoneButton").addEventListener("click", function() {

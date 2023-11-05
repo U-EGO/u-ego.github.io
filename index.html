@@ -5,20 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/section.css" rel="stylesheet">
   </head>
   <body>
     <div id="container">
       <div id="pages" class="pages">
         <div id=header>
+          <h1>Header</h1>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Papers</li>
-            <li>Feature</li>
-            <li>Subscription</li>
-            <li>Team</li>
-            <li>Contact</li>
-            <li>Lang</li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#papers">Papers</a></li>
+            <li><a href="#feature">Feature</a></li>
+            <li><a href="#subscription">Subscription</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#lang">Lang</a></li>
           </ul>
         </div>
         <div id="home">
@@ -29,23 +31,94 @@
           </div>
         </div>
         <div id="about">
+          <h1>About Clash</h1>
           <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
+          <div>
+            <h2>Enemies</h2>
+            <input type="range" name="timeline" id="timeline">
+            <h2>Obsessed</h2>
+          </div>
         </div>
         <div id="papers">
-          <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
+          <div class="paperScroll">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque iste voluptate rerum, blanditiis necessitatibus ipsum? Excepturi sapiente perferendis doloremque, iusto cum quisquam deserunt eligendi enim quasi libero sit, beatae optio?</p>
+          </div>
+          <div class="about">
+            <img src="" alt="Writer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+          </div>
         </div>
         <div id="feature">
-          <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
           <h1>What We Have to Offer</h1>
+          <div class="feature1">
+            <img src="" alt="Feature">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+          </div>
         </div>
         <div id="subscription">
-          <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
-        </div>
-        <div id="contact">
-          <p>Page for customers to contact us, contains phone number, email, social media links</p>
+          <div class="phoneForSub">
+            <h1>Subscription Plan</h1>
+            <div>
+              <div class="plan1">
+                <h2>Plan 1</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+              </div>
+              <div class="plan2">
+                <h2>Plan 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+              </div>
+              <div class="plan3">
+                <h2>Plan 3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="team">
-          <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
+          <h1>Meet the Team</h1>
+          <div class="cardsL1">
+            <div class="card">
+              <img src="" alt="PP">
+              <h2>Name</h2>
+              <p>Role</p>
+            </div>
+            <div class="card">
+              <img src="" alt="PP">
+              <h2>Name</h2>
+              <p>Role</p>
+            </div>
+            <div class="card">
+              <img src="" alt="PP">
+              <h2>Name</h2>
+              <p>Role</p>
+            </div>
+          </div>
+          <div class="cardsL2">
+            <div class="card">
+              <img src="" alt="PP">
+              <h2>Name</h2>
+              <p>Role</p>
+            </div>
+            <div class="card">
+              <img src="" alt="PP">
+              <h2>Name</h2>
+              <p>Role</p>
+            </div>
+          </div>
+        </div>
+        <div id="contact">
+          <div>
+            <h1>Contact Us</h1>
+            <p>Num and mail</p>
+            <!-- contact forms -->
+            <form action="">
+              <input type="text" name="name" id="name" placeholder="Name">
+              <input type="email" name="email" id="email" placeholder="Email">
+              <input type="text" name="subject" id="subject" placeholder="Subject">
+              <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+              <input type="submit" value="Send">
+            </form>
+          </div>
         </div>
         <div id="footer">
           <p>footer</p>

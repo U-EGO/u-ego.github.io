@@ -1,0 +1,55 @@
+#header {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 10vh;
+    background-color: #FFCFE4;
+}
+
+#header h1 {
+    margin-left: 10px;
+}
+
+#header ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+#header ul li {
+    margin-left: 10px;
+}
+
+#header ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#home {
+    height: 100vh;
+    background-image: url("../img/background-home.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-family: 'Roboto', sans-serif;
+
+    text-align: center;
+}
+
+#about {
+    height: 100vh;
+}

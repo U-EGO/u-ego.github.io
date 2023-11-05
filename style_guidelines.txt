@@ -23,7 +23,7 @@ NO METAL TEXTURE
 
 Typography
 ==========
-Will use Comic Neue from google fonts
+Will use Roboto from google fonts
 
 Links
 =====
