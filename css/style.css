@@ -1,3 +1,7 @@
+@import url(section.css);
+@import url(contact.css);
+@import url(about.css);
+
 * {
   margin: 0;
   padding: 0;
