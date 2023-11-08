@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 
-import { getActiveSection, getSectionID } from './main.js'
+import { getActiveSection, getSectionID, getPhoneScreen } from './main.js'
 
 const scene = new THREE.Scene();
 // const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -96,11 +96,21 @@ function animate() {
 
   // console.log(scrollPos);
 
+  //get the active section top position
+  let activeSectionTop = document.getElementById(getActiveSection()).offsetTop;
+
   // set the renderer to the scroll position
-  renderer.domElement.style.top = getVerticalScrollPixels(document.body)  + 'px';
-  cssRenderer.domElement.style.top =  getVerticalScrollPixels(document.body) + 'px';
+  renderer.domElement.style.top = activeSectionTop  + 'px';
+  cssRenderer.domElement.style.top =  activeSectionTop + 'px';
 
   if (loadedModel) {
+
+    if (getPhoneScreen() != null){
+      cssHtml.element.innerHTML = getPhoneScreen().innerHTML;
+    } else {
+      cssHtml.element.innerHTML = document.getElementById("phoneHTML").innerHTML;
+    }
+
     // get the absolute position of cssObj
     let vector = new THREE.Vector3();
     vector.setFromMatrixPosition( cssObj.matrixWorld );

@@ -34,3 +34,9 @@ export function getActiveSection() {
 export function getSectionID() {
   return sectionID;
 }
+
+
+
+export function getPhoneScreen() {
+  return document.getElementById(getActiveSection()+"-phone");
+}
