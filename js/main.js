@@ -26,3 +26,11 @@ window.addEventListener('scroll', () => {
   // Set the scroll position to the top of the active section
   window.scrollTo(0, activeSection.offsetTop);
 });
+
+export function getActiveSection() {
+  return activeSection.id;
+}
+
+export function getSectionID() {
+  return sectionID;
+}
