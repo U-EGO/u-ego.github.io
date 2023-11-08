@@ -4,6 +4,7 @@ import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+// const camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1000, 1000 );
 camera.position.z = 45;
 
 // lights
@@ -36,6 +37,7 @@ gltfLoader.load( 'img/models/scene.gltf', function ( gltf ) {
   loadedModel = gltf;
   scene.add( gltf.scene );
   loadedModel.scene.scale.set(0.05, 0.05, 0.05);
+  // loadedModel.scene.scale.set(0.5, 0.5, 0.5);
   // rotate the model 90 degrees
   loadedModel.scene.rotation.y = Math.PI / 2;
   loadedModel.scene.add(cssObj);
@@ -70,16 +72,28 @@ cssRenderer.domElement.id = "renderer";
 cssRenderer.domElement.className = "cssrenderer";
 document.getElementById("container").appendChild( cssRenderer.domElement );
 
-let scrollTop = document.documentElement.scrollTop;
+function getVerticalScrollPercentage( elm ){
+  var p = elm.parentNode
+  return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * 100
+}
+
+function getVerticalScrollPixels( elm ){
+  var p = elm.parentNode
+  return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * (p.scrollHeight - p.clientHeight )
+}
+
+let scrollPos = getVerticalScrollPercentage(document.body);
 
 function animate() {
   requestAnimationFrame( animate );
   
-  scrollTop = document.documentElement.scrollTop;
+  scrollPos = getVerticalScrollPercentage(document.body);
+
+  // console.log(scrollPos);
 
   // set the renderer to the scroll position
-  renderer.domElement.style.top = scrollTop + 'px';
-  cssRenderer.domElement.style.top = scrollTop + 'px';
+  renderer.domElement.style.top = getVerticalScrollPixels(document.body)  + 'px';
+  cssRenderer.domElement.style.top =  getVerticalScrollPixels(document.body) + 'px';
 
   if (loadedModel) {
     // get the absolute position of cssObj
@@ -90,8 +104,25 @@ function animate() {
     let vector2 = new THREE.Vector3();
     vector2.setFromMatrixPosition( loadedModel.scene.matrixWorld );
 
+    //get the absolute rotation of loadedModel
+    let quaternion = new THREE.Quaternion();
+    quaternion.setFromRotationMatrix( loadedModel.scene.matrixWorld );
+
+    // get the absolute rotation of cssObj
+    let quaternion2 = new THREE.Quaternion();
+    quaternion2.setFromRotationMatrix( cssObj.matrixWorld );
+
+    let rad = Math.atan(camera.position.z/Math.abs(loadedModel.scene.position.x))-Math.PI/2;
+    console.log(rad);
+
     // if loadedModel is in front of cssObj, then hide cssObj
-    if (vector.z+0.002 > vector2.z) {
+    // if (Math.abs(quaternion.y) > Math.abs(quaternion2.y)) {
+    if (loadedModel.scene.rotation.y-rad > Math.PI * 0.5 && loadedModel.scene.rotation.y-rad < Math.PI * 1.5 && loadedModel.scene.position.x >= 0) {
+      cssObj.element.style.opacity = '1';
+      cssCamObj.element.style.opacity = '1';
+      cssHtml.element.style.opacity = '1';
+      // cssRenderer.domElement.style.opacity = '1';
+    } else if (loadedModel.scene.rotation.y+rad > Math.PI * 0.5 && loadedModel.scene.rotation.y+rad < Math.PI * 1.5 && loadedModel.scene.position.x < 0) {
       cssObj.element.style.opacity = '1';
       cssCamObj.element.style.opacity = '1';
       cssHtml.element.style.opacity = '1';
@@ -113,7 +144,18 @@ function animate() {
 animate();
 
 function logic() {
-  loadedModel.scene.rotation.y += 0.01;
+  if (9.3 < getVerticalScrollPercentage(document.body) && getVerticalScrollPercentage(document.body) < 9.7){
+    // loadedModel.scene.rotation.y = Math.PI*1.15;
+    loadedModel.scene.position.x = 50;
+  } else if (10 < getVerticalScrollPercentage(document.body) && getVerticalScrollPercentage(document.body) < 10.4){
+    // loadedModel.scene.rotation.y = Math.PI*1.5;
+    loadedModel.scene.position.x = -50;
+  } else {
+    loadedModel.scene.rotation.y += 0.01;
+    if (loadedModel.scene.rotation.y > Math.PI*2) {
+      loadedModel.scene.rotation.y = 0;
+    }
+  }
 }
 
 document.getElementById("phoneButton").addEventListener("click", function() {

@@ -1,0 +1,39 @@
+#about {
+    padding: 1%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "title title" "empty about-text" "timeline-div timeline-div";
+    grid-gap: 10px;
+    background-color: aquamarine;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+#about h1 {
+    grid-area: title;
+    margin-top: 10px;
+}
+
+#about-text {
+    grid-area: about-text;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFCFE4;
+}
+
+#about-text p {
+    margin: 10px;
+}
+
+#timeline-div {
+    grid-area: timeline-div;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
