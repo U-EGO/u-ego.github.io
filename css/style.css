@@ -1,6 +1,11 @@
 @import url(section.css);
 @import url(contact.css);
 @import url(about.css);
+@import url(papers.css);
+@import url(feature.css);
+@import url(sub.css);
+@import url(teams.css);
+@import url(footer.css);
 
 * {
   margin: 0;
