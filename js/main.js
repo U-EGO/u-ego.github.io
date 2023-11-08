@@ -1,6 +1,6 @@
 
 // Get all the sections
-const sectionID = ["home", "about", "papers", "feature1", "feature2", "feature3", "subscription", "team", "contact"];
+const sectionID = ["home", "about", "papers", "feature1", "feature2", "feature3", "feature4", "feature5", "subscription", "team", "contact", "footer"];
 const sections = sectionID.map(id => document.getElementById(id));
 
 // Set the active section to the first one
