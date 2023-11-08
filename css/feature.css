@@ -1,3 +1,14 @@
-#feature {
+#feature1 {
     height: 100vh;
+    background-color: aqua;
+}
+
+#feature2 {
+    height: 100vh;
+    background-color: blueviolet;
+}
+
+#feature3 {
+    height: 100vh;
+    background-color: cornflowerblue;
 }
