@@ -107,8 +107,10 @@ function animate() {
 
     if (getPhoneScreen() != null){
       cssHtml.element.innerHTML = getPhoneScreen().innerHTML;
+      cssHtml.element.id = getPhoneScreen().id;
+      cssHtml.element.style.display = 'block';
     } else {
-      cssHtml.element.innerHTML = document.getElementById("phoneHTML").innerHTML;
+      cssHtml.element.innerHTML = document.getElementById("basePhoneHTML").innerHTML;
     }
 
     // get the absolute position of cssObj
@@ -201,6 +203,13 @@ function logic() {
       break;
   
     default:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
       break;
   }
 }

@@ -35,8 +35,13 @@ export function getSectionID() {
   return sectionID;
 }
 
+export function getPhoneScreenHtml() {
+  return document.getElementById(getActiveSection()+"-phone");
+}
 
+export function getPhoneScreenCSS() {
+}
 
 export function getPhoneScreen() {
-  return document.getElementById(getActiveSection()+"-phone");
+  return getPhoneScreenHtml();
 }
