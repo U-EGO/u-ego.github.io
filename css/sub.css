@@ -1,3 +1,80 @@
 #subscription {
     height: 100vh;
+    background-color: #FFB8B8;
+    background-image: url("../img/bg-subscription.png");
+    display:flex;
+}
+
+.phoneForSub{
+    width:950px;
+    aspect-ratio: 16 / 9;
+
+    margin:auto;
+    background-color: #BDEEE8;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+
+.phoneForSub h1{
+    width:100%;
+    height:fit-content;
+    font-size:52px;
+    font-weight:900;
+    text-align: center;
+    margin:auto;
+    height:90px;
+    line-height:110px;
+}
+
+.subPlan_container{
+    width:100%;
+    height:80%;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+
+.subPlan{
+    width:25%;
+    height:85%;
+    background-color: #aadfd4;
+    border-radius: 20px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-rows: 25% auto 25%;
+}
+
+.subPlan h2{
+    width:100%;
+    height:fit-content;
+    margin:auto;
+    text-align: center;
+    font-size:36px;
+    font-weight:900;
+    color:#333333;
+}
+
+.subPlan p{
+    width:80%;
+    height:auto;
+    margin-left:10%;
+    font-size:20px;
+    font-weight:700;
+    color:#333333;
+}
+
+.subPlan h3{
+    width:80%;
+    height:fit-content;
+    margin:auto;
+    padding:5% 2%;
+    text-align: center;
+    font-size:40px;
+    font-weight:900;
+    color:#679191;
+    background-color: #FFEECC;
+    border-radius: 10px;
 }
