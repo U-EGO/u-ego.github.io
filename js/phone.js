@@ -2,8 +2,11 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 
+import { getActiveSection, getSectionID, getPhoneScreen } from './main.js'
+
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+// const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2000);
 // const camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1000, 1000 );
 camera.position.z = 45;
 
@@ -84,6 +87,8 @@ function getVerticalScrollPixels( elm ){
 
 let scrollPos = getVerticalScrollPercentage(document.body);
 
+let angleToMiddle = 0;
+
 function animate() {
   requestAnimationFrame( animate );
   
@@ -91,11 +96,23 @@ function animate() {
 
   // console.log(scrollPos);
 
+  //get the active section top position
+  let activeSectionTop = document.getElementById(getActiveSection()).offsetTop;
+
   // set the renderer to the scroll position
-  renderer.domElement.style.top = getVerticalScrollPixels(document.body)  + 'px';
-  cssRenderer.domElement.style.top =  getVerticalScrollPixels(document.body) + 'px';
+  renderer.domElement.style.top = activeSectionTop  + 'px';
+  cssRenderer.domElement.style.top =  activeSectionTop + 'px';
 
   if (loadedModel) {
+
+    if (getPhoneScreen() != null){
+      cssHtml.element.innerHTML = getPhoneScreen().innerHTML;
+      cssHtml.element.id = getPhoneScreen().id;
+      cssHtml.element.style.display = 'block';
+    } else {
+      cssHtml.element.innerHTML = document.getElementById("basePhoneHTML").innerHTML;
+    }
+
     // get the absolute position of cssObj
     let vector = new THREE.Vector3();
     vector.setFromMatrixPosition( cssObj.matrixWorld );
@@ -114,6 +131,7 @@ function animate() {
 
     let rad = Math.atan(camera.position.z/Math.abs(loadedModel.scene.position.x))-Math.PI/2;
     console.log(rad);
+    angleToMiddle = (loadedModel.scene.position.x < 0) ? Math.PI - rad : Math.PI + rad;
 
     // if loadedModel is in front of cssObj, then hide cssObj
     // if (Math.abs(quaternion.y) > Math.abs(quaternion2.y)) {
@@ -144,17 +162,55 @@ function animate() {
 animate();
 
 function logic() {
-  if (9.3 < getVerticalScrollPercentage(document.body) && getVerticalScrollPercentage(document.body) < 9.7){
-    // loadedModel.scene.rotation.y = Math.PI*1.15;
-    loadedModel.scene.position.x = 50;
-  } else if (10 < getVerticalScrollPercentage(document.body) && getVerticalScrollPercentage(document.body) < 10.4){
-    // loadedModel.scene.rotation.y = Math.PI*1.5;
-    loadedModel.scene.position.x = -50;
-  } else {
-    loadedModel.scene.rotation.y += 0.01;
-    if (loadedModel.scene.rotation.y > Math.PI*2) {
-      loadedModel.scene.rotation.y = 0;
-    }
+  switch (getActiveSection()) {
+    case getSectionID()[0]:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = Math.PI;
+      loadedModel.scene.rotation.z = 0;
+
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 75;
+      break;
+    case getSectionID()[1]:
+      loadedModel.scene.position.x = -20;
+      loadedModel.scene.position.y = 5;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
+
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 50;
+      break;
+    case getSectionID()[2]:
+      loadedModel.scene.position.x = 20;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = 0;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 45;
+      break;
+  
+    default:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
+      break;
   }
 }
 
