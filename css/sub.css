@@ -78,3 +78,7 @@
     background-color: #FFEECC;
     border-radius: 10px;
 }
+
+.right_align{
+    text-align: right;
+}
