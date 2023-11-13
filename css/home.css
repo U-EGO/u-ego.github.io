@@ -1,0 +1,33 @@
+#home{
+    height:100vh;
+    width:100%;    
+    background-image: url("../img/background-home.png");
+    background-size:cover;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: flex-end;
+    gap:15px;
+}
+
+#home_title{
+    font-size: 56px;
+    font-weight:900;
+    width:50%;
+    text-align: right;
+    color:#D7FFFF;
+    text-shadow:-2px -2px 0 #809B9B;
+    margin-top:10%;
+    margin-right:3%;
+}
+
+#home_slogan{
+    font-size: 24px;
+    font-weight:700;
+    color:#333333;
+    margin-bottom:10%;
+    margin-right:3%;
+}

@@ -1,9 +1,5 @@
-@import url(contact.css);
-@import url(team.css);
-@import url(sub.css);
-
 #header {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,7 +15,7 @@
     width:100%;
     height:20vh;
     /* background-color: rgba(255, 207, 228, 0.5); */
-    position: absolute;
+    position: fixed;
     transform: translate(0, 0vh);
     /* background-image: linear-gradient(rgba(255, 207, 228, 0.5), rgba(255, 207, 228, 0)); */
     background-image: linear-gradient(rgba(255, 207, 228, 1), rgba(255, 207, 228, 1), rgba(255, 207, 228, 0));
@@ -86,7 +82,7 @@
     font-weight:700;
 }
 
-#home {
+/* #home {
     height: 100vh;
     background-image: url("../img/background-home.png");
     background-size: cover;
@@ -103,4 +99,4 @@
     font-family: 'Roboto', sans-serif;
 
     text-align: center;
-}
+} */

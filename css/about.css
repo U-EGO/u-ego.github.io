@@ -39,6 +39,12 @@
 
 #about_timeline_highlight{
     position: absolute;
+    height:9px;
+    width:8%;
+    transform:translate(0, -2px);
+    border-radius:2px;
+    background-color: #8888e4;
+    transition:0.3s;
 }
 
 #about_timeline_grid{
