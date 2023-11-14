@@ -1,5 +1,6 @@
 var navbar = document.getElementById("header_blend");
 var navb = document.getElementById("header");
+var ftitle = document.getElementById("ftitle");
 // Get all the sections
 const sectionID = ["home", "about", "papers", "feature1", "feature2", "feature3", "feature4", "feature5", "subscription", "team", "contact", "footer"];
 const sections = sectionID.map(id => document.getElementById(id));
@@ -27,6 +28,17 @@ window.addEventListener('scroll', () => {
   // Set the scroll position to the top of the active section
   window.scrollTo(0, activeSection.offsetTop);
 
+  // add the dsel id to sidenav li element of the active section
+  let nav = document.getElementById("sidenav");
+  nav.childNodes.forEach(li => {
+    if (li.childNodes[0].href.endsWith(getActiveSection())) {
+      // add id dsel to li
+      li.classList.add("dsel");
+    }
+    else {
+      li.classList.remove("dsel");
+    }
+  });
   
   if (getActiveSection() != sectionID[0]) {
     navbar.classList.add("sticky");
@@ -34,6 +46,12 @@ window.addEventListener('scroll', () => {
   } else {
     navbar.classList.remove("sticky");
     navb.classList.remove("sticky");
+  }
+
+  if (getActiveSection().startsWith("feature")) {
+    ftitle.classList.add("fsticky");
+  } else {
+    ftitle.classList.remove("fsticky");
   }
 });
 
@@ -55,3 +73,13 @@ export function getPhoneScreenCSS() {
 export function getPhoneScreen() {
   return getPhoneScreenHtml();
 }
+
+function generateSideNav() {
+  let nav = document.getElementById("sidenav");
+  let navhtml = "";
+  for (let i = 0; i < sectionID.length; i++) {
+    navhtml += "<li><a href='#"+sectionID[i]+"'>·</a></li>";
+  }
+  nav.innerHTML = navhtml;
+}
+generateSideNav();
