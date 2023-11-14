@@ -100,3 +100,16 @@
 
     text-align: center;
 } */
+
+/* hide header blend when header not top */
+.sticky:not(#header) {
+    display: none;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+

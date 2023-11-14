@@ -1,4 +1,5 @@
-
+var navbar = document.getElementById("header_blend");
+var navb = document.getElementById("header");
 // Get all the sections
 const sectionID = ["home", "about", "papers", "feature1", "feature2", "feature3", "feature4", "feature5", "subscription", "team", "contact", "footer"];
 const sections = sectionID.map(id => document.getElementById(id));
@@ -25,6 +26,15 @@ window.addEventListener('scroll', () => {
 
   // Set the scroll position to the top of the active section
   window.scrollTo(0, activeSection.offsetTop);
+
+  
+  if (getActiveSection() != sectionID[0]) {
+    navbar.classList.add("sticky");
+    navb.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+    navb.classList.remove("sticky");
+  }
 });
 
 export function getActiveSection() {
