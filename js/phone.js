@@ -164,12 +164,12 @@ animate();
 function logic() {
   switch (getActiveSection()) {
     case getSectionID()[0]:
-      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.x = 20;
       loadedModel.scene.position.y = 0;
       loadedModel.scene.rotation.z = 0;
 
       loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = Math.PI;
+      loadedModel.scene.rotation.y = angleToMiddle;
       loadedModel.scene.rotation.z = 0;
 
       camera.position.x = 0;
@@ -190,7 +190,7 @@ function logic() {
       camera.position.z = 50;
       break;
     case getSectionID()[2]:
-      loadedModel.scene.position.x = 20;
+      loadedModel.scene.position.x = -20;
       loadedModel.scene.position.y = 0;
       loadedModel.scene.rotation.z = 0;
 
@@ -201,6 +201,116 @@ function logic() {
       camera.position.y = 0;
       camera.position.z = 45;
       break;
+    case getSectionID()[3]:
+        loadedModel.scene.position.x = -20;
+        loadedModel.scene.position.y = -1;
+        loadedModel.scene.rotation.z = 0;
+  
+        loadedModel.scene.rotation.x = 0;
+        loadedModel.scene.rotation.y = angleToMiddle;
+        loadedModel.scene.rotation.z = 0;
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 45;
+        break;
+    case getSectionID()[4]:
+      loadedModel.scene.position.x = 20;
+      loadedModel.scene.position.y = -1;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = 0;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 45;
+      break;
+    case getSectionID()[5]:
+      loadedModel.scene.position.x = -20;
+      loadedModel.scene.position.y = -1;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = 0;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 45;
+      break;
+    case getSectionID()[6]:
+      loadedModel.scene.position.x = 20;
+      loadedModel.scene.position.y = -1;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = 0;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 45;
+      break;
+    case getSectionID()[7]:
+      loadedModel.scene.position.x = -20;
+      loadedModel.scene.position.y = -1;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = 0;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 45;
+      break;
+    case getSectionID()[8]:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 25;
+      break;
+    case getSectionID()[9]:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 25;
+      break;
+    case getSectionID()[10]:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 25;
+      break;
+    case getSectionID()[11]:
+      loadedModel.scene.position.x = 0;
+      loadedModel.scene.position.y = 0;
+      loadedModel.scene.rotation.z = 0;
+
+      loadedModel.scene.rotation.x = 0;
+      loadedModel.scene.rotation.y = angleToMiddle;
+      loadedModel.scene.rotation.z = -Math.PI / 2;
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.position.z = 25;
+      break;
+
+
   
     default:
       loadedModel.scene.position.x = 0;
