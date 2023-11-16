@@ -26,7 +26,7 @@ window.addEventListener('scroll', () => {
   activeSection = sections[minIndex];
 
   // Set the scroll position to the top of the active section
-  window.scrollTo(0, activeSection.offsetTop);
+  // window.scrollTo(0, activeSection.offsetTop);
 
   // add the dsel id to sidenav li element of the active section
   let nav = document.getElementById("sidenav");
@@ -72,6 +72,31 @@ export function getPhoneScreenCSS() {
 
 export function getPhoneScreen() {
   return getPhoneScreenHtml();
+}
+
+let angleToMiddle = 0;
+
+export function limiteTo2pi(angle) {
+  while (angle < 0 - 0.0001) {
+    angle += 2*Math.PI;
+  }
+  while (angle > 2*Math.PI + 0.0001) {
+    angle -= 2*Math.PI;
+  }
+  return angle;
+}
+
+export function getAngleToMiddle() {
+  return angleToMiddle;
+}
+
+export function getAngleToMiddleCords(x, cam_y) {
+  let rad = Math.atan(cam_y/Math.abs(x))-Math.PI/2;
+  return (x < 0) ? Math.PI - rad : Math.PI + rad;
+}
+
+export function setAngleToMiddle(angle) {
+  angleToMiddle = limiteTo2pi(angle);
 }
 
 function generateSideNav() {

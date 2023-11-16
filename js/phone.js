@@ -2,11 +2,20 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 
-import { getActiveSection, getSectionID, getPhoneScreen } from './main.js'
+import { getActiveSection, getSectionID, getPhoneScreen, getAngleToMiddle, setAngleToMiddle } from './main.js'
+import { getPosition } from './animeation.js';
+
+var animationScripts = []
 
 const scene = new THREE.Scene();
 // const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2000);
+// const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2000);
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+)
 // const camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1000, 1000 );
 camera.position.z = 45;
 
@@ -61,7 +70,7 @@ cssObj.element.style.borderRadius = '30px';
 cssCamObj.element.style.borderRadius = '30px';
 cssObj.rotateY(Math.PI);
 
-let renderer = new THREE.WebGLRenderer({ antialias: true });
+let renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setClearColor(0x000000, 0);
@@ -75,9 +84,16 @@ cssRenderer.domElement.id = "renderer";
 cssRenderer.domElement.className = "cssrenderer";
 document.getElementById("container").appendChild( cssRenderer.domElement );
 
+let scrollPercent = 0
+
 function getVerticalScrollPercentage( elm ){
   var p = elm.parentNode
   return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * 100
+}
+
+function getVercticallScrollPercentagePage(){
+  // get the % base on the height of the element
+  return window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
 }
 
 function getVerticalScrollPixels( elm ){
@@ -87,21 +103,34 @@ function getVerticalScrollPixels( elm ){
 
 let scrollPos = getVerticalScrollPercentage(document.body);
 
-let angleToMiddle = 0;
+window.addEventListener('resize', onWindowResize, false)
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    cssRenderer.setSize(window.innerWidth, window.innerHeight)
+    render()
+}
+
+function render() {
+  cssRenderer.render(scene, camera)
+  renderer.render(scene, camera)
+}
 
 function animate() {
   requestAnimationFrame( animate );
   
-  scrollPos = getVerticalScrollPercentage(document.body);
+  scrollPos = getVercticallScrollPercentagePage();
+  scrollPercent = Math.abs(scrollPos);
 
   // console.log(scrollPos);
 
   //get the active section top position
   let activeSectionTop = document.getElementById(getActiveSection()).offsetTop;
 
-  // set the renderer to the scroll position
-  renderer.domElement.style.top = activeSectionTop  + 'px';
-  cssRenderer.domElement.style.top =  activeSectionTop + 'px';
+  // // set the renderer to the scroll position
+  // renderer.domElement.style.top = activeSectionTop  + 'px';
+  // cssRenderer.domElement.style.top =  activeSectionTop + 'px';
 
   if (loadedModel) {
 
@@ -130,8 +159,9 @@ function animate() {
     quaternion2.setFromRotationMatrix( cssObj.matrixWorld );
 
     let rad = Math.atan(camera.position.z/Math.abs(loadedModel.scene.position.x))-Math.PI/2;
-    console.log(rad);
-    angleToMiddle = (loadedModel.scene.position.x < 0) ? Math.PI - rad : Math.PI + rad;
+    // console.log(rad);
+    setAngleToMiddle((loadedModel.scene.position.x < 0) ? Math.PI - rad : Math.PI + rad);
+    // console.log(getAngleToMiddle());
 
     // if loadedModel is in front of cssObj, then hide cssObj
     // if (Math.abs(quaternion.y) > Math.abs(quaternion2.y)) {
@@ -155,175 +185,79 @@ function animate() {
     logic();
   }
 
-  cssRenderer.render( scene, camera );
-  renderer.render( scene, camera );
+  render();
 }
 
 animate();
 
 function logic() {
-  switch (getActiveSection()) {
-    case getSectionID()[0]:
-      loadedModel.scene.position.x = 20;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = 0;
-
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 75;
-      break;
-    case getSectionID()[1]:
-      loadedModel.scene.position.x = -20;
-      loadedModel.scene.position.y = 5;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = -Math.PI / 2;
-
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 50;
-      break;
-    case getSectionID()[2]:
-      loadedModel.scene.position.x = -20;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = 0;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 45;
-      break;
-    case getSectionID()[3]:
-        loadedModel.scene.position.x = -20;
-        loadedModel.scene.position.y = -1;
-        loadedModel.scene.rotation.z = 0;
-  
-        loadedModel.scene.rotation.x = 0;
-        loadedModel.scene.rotation.y = angleToMiddle;
-        loadedModel.scene.rotation.z = 0;
-        camera.position.x = 0;
-        camera.position.y = 0;
-        camera.position.z = 45;
-        break;
-    case getSectionID()[4]:
-      loadedModel.scene.position.x = 20;
-      loadedModel.scene.position.y = -1;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = 0;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 45;
-      break;
-    case getSectionID()[5]:
-      loadedModel.scene.position.x = -20;
-      loadedModel.scene.position.y = -1;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = 0;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 45;
-      break;
-    case getSectionID()[6]:
-      loadedModel.scene.position.x = 20;
-      loadedModel.scene.position.y = -1;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = 0;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 45;
-      break;
-    case getSectionID()[7]:
-      loadedModel.scene.position.x = -20;
-      loadedModel.scene.position.y = -1;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = 0;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 45;
-      break;
-    case getSectionID()[8]:
-      loadedModel.scene.position.x = 0;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = -Math.PI / 2;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 25;
-      break;
-    case getSectionID()[9]:
-      loadedModel.scene.position.x = 0;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = -Math.PI / 2;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 25;
-      break;
-    case getSectionID()[10]:
-      loadedModel.scene.position.x = 0;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = -Math.PI / 2;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 25;
-      break;
-    case getSectionID()[11]:
-      loadedModel.scene.position.x = 0;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = -Math.PI / 2;
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 25;
-      break;
-
-
-  
-    default:
-      loadedModel.scene.position.x = 0;
-      loadedModel.scene.position.y = 0;
-      loadedModel.scene.rotation.z = 0;
-
-      loadedModel.scene.rotation.x = 0;
-      loadedModel.scene.rotation.y = angleToMiddle;
-      loadedModel.scene.rotation.z = -Math.PI / 2;
-      break;
-  }
+  playAnimation();
 }
 
-document.getElementById("phoneButton").addEventListener("click", function() {
-  alert("button clicked");
-});
+// animation section
+
+function lerp(x, y, a) {
+  return x * (1 - a) + y * a
+}
+
+function scalePercent(start, end) {
+  return (scrollPercent - start) / (end - start)
+}
+
+for (let i = 1; i < getPosition().length; i++) {
+  animationScripts.push({
+      start: getPosition()[i].start,
+      end: getPosition()[i].end,
+      func: () => {
+          camera.position.set(getPosition()[i].cam_x, getPosition()[i].cam_y, getPosition()[i].cam_z)
+          loadedModel.scene.position.z = lerp(getPosition()[i - 1].z, getPosition()[i].z, scalePercent(getPosition()[i].start, getPosition()[i].end))
+          loadedModel.scene.position.x = lerp(getPosition()[i - 1].x, getPosition()[i].x, scalePercent(getPosition()[i].start, getPosition()[i].end))
+          loadedModel.scene.position.y = lerp(getPosition()[i - 1].y, getPosition()[i].y, scalePercent(getPosition()[i].start, getPosition()[i].end))
+
+          loadedModel.scene.rotation.x = lerp(getPosition()[i - 1].rotateX, getPosition()[i].rotateX, scalePercent(getPosition()[i].start, getPosition()[i].end));
+          loadedModel.scene.rotation.y = lerp(getPosition()[i - 1].rotateY, getPosition()[i].rotateY, scalePercent(getPosition()[i].start, getPosition()[i].end));
+          loadedModel.scene.rotation.z = lerp(getPosition()[i - 1].rotateZ, getPosition()[i].rotateZ, scalePercent(getPosition()[i].start, getPosition()[i].end));
+      },
+    })
+}
+
+// animationScripts.push({
+//   start: 0,
+//   end: 100,
+//   func: () => {
+//       camera.position.set(0, 1, 45)
+//       loadedModel.scene.position.z = lerp(0, 8, scalePercent(0, 100))
+//       loadedModel.scene.position.x = lerp(0, -20, scalePercent(0, 100))
+//       loadedModel.scene.position.y = lerp(0, 8, scalePercent(0, 100))
+
+//       loadedModel.scene.rotation.y = lerp(-getAngleToMiddle(), getAngleToMiddle(), scalePercent(0, 100));
+//       loadedModel.scene.rotation.z = lerp(0, -Math.PI / 2, scalePercent(0, 100));
+//       console.log(scrollPercent)
+//       //console.log(cube.position.z)
+//   },
+// })
+
+// animationScripts.push({
+//   start: 100,
+//   end: 200,
+//   func: () => {
+//       camera.position.set(0, 1, 45)
+//       loadedModel.scene.position.z = lerp(8, 0, scalePercent(100, 200))
+//       loadedModel.scene.position.x = lerp(-20, 0, scalePercent(100, 200))
+//       loadedModel.scene.position.y = lerp(8, 0, scalePercent(100,200))
+
+//       loadedModel.scene.rotation.y = getAngleToMiddle();
+//       loadedModel.scene.rotation.z = lerp(-Math.PI / 2, 0, scalePercent(100, 200));
+//       console.log(scrollPercent)
+//       //console.log(cube.position.z)
+//   },
+// })
+
+function playAnimation() {
+  animationScripts.forEach((script) => {
+      if (scrollPercent >= script.start && scrollPercent <= script.end) {
+          script.func()
+      }
+  })
+}
+window.scrollTo({ top: 0, behavior: 'smooth' })

@@ -34,7 +34,7 @@
 }
 
 .renderer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
@@ -43,9 +43,17 @@
 }
 
 .cssrenderer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1; /* change to 1 before the end so phone interation can work */
   pointer-events: none;
+}
+
+#scrollProgress {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 99;
+  font-size: 3vh;
 }
