@@ -17,6 +17,7 @@ const viewportHeight = window.innerHeight;
 window.scrollTo(0, activeSection.offsetTop);
 
 let currentSec = 0;
+let lastSec = 0;
 
 // Listen for scroll events
 window.addEventListener('scroll', () => {
@@ -31,15 +32,6 @@ window.addEventListener('scroll', () => {
 
   // add the dsel id to sidenav li element of the active section
   let nav = document.getElementById("sidenav");
-  nav.childNodes.forEach(li => {
-    if (li.childNodes[0].href.endsWith(getActiveSection())) {
-      // add id dsel to li
-      li.classList.add("dsel");
-    }
-    else {
-      li.classList.remove("dsel");
-    }
-  });
   
   if (getActiveSection() != sectionID[0]) {
     navbar.classList.add("sticky");
@@ -59,8 +51,13 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('scroll', () => {
-  
+  window.scrollTo(0, currentSec*viewportHeight);
 });
+
+// disable completely the scroll
+window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+}, {passive: false});
 
 export function getActiveSection() {
   return activeSection.id;
@@ -139,9 +136,96 @@ export function setAngleToMiddle(angle) {
 function generateSideNav() {
   let nav = document.getElementById("sidenav");
   let navhtml = "";
-  for (let i = 0; i < sectionID.length; i++) {
-    navhtml += "<li><a href='#"+sectionID[i]+"'>·</a></li>";
-  }
+  navhtml += "<button><</button>";
+  navhtml += "<li><a id=\"down\">\\/</a></li>";
   nav.innerHTML = navhtml;
 }
-generateSideNav();
+// generateSideNav();
+
+let up = document.getElementById("up");
+let down = document.getElementById("down");
+
+up.addEventListener("click", () => {
+  if (currentSec > 0) {
+    currentSec--;
+    window.scrollTo(0, currentSec*viewportHeight);
+  }
+});
+
+down.addEventListener("click", () => {
+  if (currentSec < sections.length - 1) {
+    currentSec++;
+    window.scrollTo(0, currentSec*viewportHeight);
+  }
+});
+
+let h = document.getElementById("h");
+h.addEventListener("click", () => {
+  currentSec = 0;
+  window.scrollTo(0, currentSec*viewportHeight);
+});
+
+let a = document.getElementById("a");
+a.addEventListener("click", () => {
+  currentSec = 1;
+  window.scrollTo(0, currentSec*viewportHeight);
+});
+
+// let f1 = document.getElementById("f1");
+// f1.addEventListener("click", () => {
+//   currentSec = 2;
+//   window.scrollTo(0, currentSec*viewportHeight);
+// });
+
+// let f2 = document.getElementById("f2");
+// f2.addEventListener("click", () => {
+//   currentSec = 3;
+//   window.scrollTo(0, currentSec*viewportHeight);
+// });
+
+// let f3 = document.getElementById("f3");
+// f3.addEventListener("click", () => {
+//   currentSec = 4;
+//   window.scrollTo(0, currentSec*viewportHeight);
+// });
+
+// let f4 = document.getElementById("f4");
+// f4.addEventListener("click", () => {
+//   currentSec = 5;
+//   window.scrollTo(0, currentSec*viewportHeight);
+// });
+
+// let f5 = document.getElementById("f5");
+// f5.addEventListener("click", () => {
+//   currentSec = 6;
+//   window.scrollTo(0, currentSec*viewportHeight);
+// });
+
+let s = document.getElementById("s");
+s.addEventListener("click", () => {
+  currentSec = 7;
+  window.scrollTo(0, currentSec*viewportHeight);
+});
+
+let t = document.getElementById("t");
+t.addEventListener("click", () => {
+  currentSec = 8;
+  window.scrollTo(0, currentSec*viewportHeight);
+});
+
+let c = document.getElementById("c");
+c.addEventListener("click", () => {
+  currentSec = 9;
+  window.scrollTo(0, currentSec*viewportHeight);
+});
+
+let f = document.getElementById("f");
+let fs = 2;
+f.addEventListener("click", () => {
+  currentSec = fs;
+  window.scrollTo(0, currentSec*viewportHeight);
+  fs++;
+  if (fs > 6) {
+    fs = 2;
+  }
+});

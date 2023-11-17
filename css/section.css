@@ -82,6 +82,27 @@
     font-weight:700;
 }
 
+.fhide {
+    display: none;
+}
+
+#header #fl ul {
+    list-style-type: none;
+    gap: 10px;
+    height: auto;
+    margin-right: 20px;
+}
+
+#header #fl ul li {
+    background-color: #f8a4bc;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: 0.2s;
+}
+
 #dsidenav {
     position: fixed;
     display: flex;
