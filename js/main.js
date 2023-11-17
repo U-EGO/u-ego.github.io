@@ -52,8 +52,10 @@ window.addEventListener('scroll', () => {
 
   if (getActiveSection().startsWith("feature")) {
     ftitle.classList.add("fsticky");
+    ftitle.style.display = "block";
   } else {
     ftitle.classList.remove("fsticky");
+    ftitle.style.display = "none";
   }
 });
 

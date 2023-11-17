@@ -4,9 +4,9 @@
     background-image: url("../img/bg-subscription.png");
     display:flex;
 }
-
-.phoneForSub{
-    width:950px;
+.subphone{
+    /* rotate: 90deg; */
+    width:60%;
     aspect-ratio: 16 / 9;
 
     margin:auto;
@@ -17,7 +17,7 @@
     justify-content:space-around;
 }
 
-.phoneForSub h1{
+.subphone h1{
     width:100%;
     height:fit-content;
     font-size:52px;

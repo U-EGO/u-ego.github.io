@@ -108,7 +108,7 @@ export function isXFacingCamera(){
     let angleX1 = limiteAngle(angleToMiddle.x - Math.PI / 2);
     let angleX2 = limiteAngle(angleToMiddle.x + Math.PI / 2);
 
-    console.log(angles.x, angleX1, angleX2, isInRange(angles.x, angleX1, angleX2));
+    // console.log(angles.x, angleX1, angleX2, isInRange(angles.x, angleX1, angleX2));
 
     return !isInRange(angles.x, angleX1, angleX2);
 }
@@ -117,7 +117,7 @@ export function isYFacingCamera(){
     let angleY1 = limiteAngle(angleToMiddle.y - Math.PI / 2);
     let angleY2 = limiteAngle(angleToMiddle.y + Math.PI / 2);
 
-    console.log(angles.y, angleY1, angleY2, isInRange(angles.y, angleY1, angleY2));
+    // console.log(angles.y, angleY1, angleY2, isInRange(angles.y, angleY1, angleY2));
 
     return !isInRange(angles.y, angleY1, angleY2);
 }

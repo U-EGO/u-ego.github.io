@@ -140,6 +140,7 @@ function animate() {
       cssHtml.element.innerHTML = getPhoneScreen().innerHTML;
       cssHtml.element.id = getPhoneScreen().id;
       cssHtml.element.style.display = 'block';
+      console.log(getPhoneScreen().id);
     } else {
       cssHtml.element.innerHTML = document.getElementById("basePhoneHTML").innerHTML;
     }
