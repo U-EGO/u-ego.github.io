@@ -76,6 +76,11 @@ export function getPhoneScreen() {
 
 let angleToMiddle = 0;
 
+let angleToMid = {
+  x: 0,
+  y: 0
+}
+
 export function limiteTo2pi(angle) {
   while (angle < 0 - 0.0001) {
     angle += 2*Math.PI;
@@ -86,6 +91,15 @@ export function limiteTo2pi(angle) {
   return angle;
 }
 
+export function getAngleToMid(){
+  return angleToMid;
+}
+
+export function setAngleToMid(x,y) {
+  angleToMid.x = limiteTo2pi(x);
+  angleToMid.y = limiteTo2pi(y);
+}
+
 export function getAngleToMiddle() {
   return angleToMiddle;
 }
@@ -93,6 +107,22 @@ export function getAngleToMiddle() {
 export function getAngleToMiddleCords(x, cam_y) {
   let rad = Math.atan(cam_y/Math.abs(x))-Math.PI/2;
   return (x < 0) ? Math.PI - rad : Math.PI + rad;
+}
+
+export function isYFacingCamera(rotateY, posX){
+  let angleY = limiteTo2pi(rotateY - angleToMid.y);
+  let angleY2 = limiteTo2pi(rotateY + angleToMid.y);
+  return ((angleY > Math.PI * 0.5 && angleY < Math.PI * 1.5 && posX >= 0) || (angleY2 > Math.PI * 0.5 && angleY2 < Math.PI * 1.5 && posX < 0));
+}
+
+export function isXFacingCamera(rotateX, posY){
+  let angleX = limiteTo2pi(rotateX - angleToMid.x);
+  let angleX2 = limiteTo2pi(rotateX + angleToMid.x);
+  return ((angleX > Math.PI * 0.5 && angleX < Math.PI * 1.5 && posY >= 0) || (angleX2 > Math.PI * 0.5 && angleX2 < Math.PI * 1.5 && posY < 0));
+}
+
+export function isPhoneScreenFacingCamera(rotateX,rotateY,posX,posY) {
+  return isXFacingCamera(rotateX,posY) && isYFacingCamera(rotateY,posX);
 }
 
 export function setAngleToMiddle(angle) {

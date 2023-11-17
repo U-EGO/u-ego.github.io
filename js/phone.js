@@ -2,8 +2,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 
-import { getActiveSection, getSectionID, getPhoneScreen, getAngleToMiddle, setAngleToMiddle } from './main.js'
+import { getActiveSection, getSectionID, getPhoneScreen } from './main.js'
 import { getPosition } from './animeation.js';
+import { isFacingCamera, setData } from './angleLogic.js';
 
 var animationScripts = []
 
@@ -133,6 +134,7 @@ function animate() {
   // cssRenderer.domElement.style.top =  activeSectionTop + 'px';
 
   if (loadedModel) {
+    setData(loadedModel.scene.position.x, loadedModel.scene.position.y, loadedModel.scene.position.z, loadedModel.scene.rotation.x, loadedModel.scene.rotation.y, loadedModel.scene.rotation.z, camera.position.x, camera.position.y, camera.position.z, camera.rotation.x, camera.rotation.y, camera.rotation.z);
 
     if (getPhoneScreen() != null){
       cssHtml.element.innerHTML = getPhoneScreen().innerHTML;
@@ -142,45 +144,25 @@ function animate() {
       cssHtml.element.innerHTML = document.getElementById("basePhoneHTML").innerHTML;
     }
 
-    // get the absolute position of cssObj
-    let vector = new THREE.Vector3();
-    vector.setFromMatrixPosition( cssObj.matrixWorld );
-
-    // get the absolute position of loadedModel
-    let vector2 = new THREE.Vector3();
-    vector2.setFromMatrixPosition( loadedModel.scene.matrixWorld );
-
-    //get the absolute rotation of loadedModel
-    let quaternion = new THREE.Quaternion();
-    quaternion.setFromRotationMatrix( loadedModel.scene.matrixWorld );
-
-    // get the absolute rotation of cssObj
-    let quaternion2 = new THREE.Quaternion();
-    quaternion2.setFromRotationMatrix( cssObj.matrixWorld );
-
-    let rad = Math.atan(camera.position.z/Math.abs(loadedModel.scene.position.x))-Math.PI/2;
-    // console.log(rad);
-    setAngleToMiddle((loadedModel.scene.position.x < 0) ? Math.PI - rad : Math.PI + rad);
-    // console.log(getAngleToMiddle());
 
     // if loadedModel is in front of cssObj, then hide cssObj
     // if (Math.abs(quaternion.y) > Math.abs(quaternion2.y)) {
-    if (loadedModel.scene.rotation.y-rad > Math.PI * 0.5 && loadedModel.scene.rotation.y-rad < Math.PI * 1.5 && loadedModel.scene.position.x >= 0) {
-      cssObj.element.style.opacity = '1';
-      cssCamObj.element.style.opacity = '1';
-      cssHtml.element.style.opacity = '1';
-      // cssRenderer.domElement.style.opacity = '1';
-    } else if (loadedModel.scene.rotation.y+rad > Math.PI * 0.5 && loadedModel.scene.rotation.y+rad < Math.PI * 1.5 && loadedModel.scene.position.x < 0) {
-      cssObj.element.style.opacity = '1';
-      cssCamObj.element.style.opacity = '1';
-      cssHtml.element.style.opacity = '1';
-      // cssRenderer.domElement.style.opacity = '1';
-    } else {
-      cssObj.element.style.opacity = '0';
-      cssCamObj.element.style.opacity = '0';
-      cssHtml.element.style.opacity = '0';
-      // cssRenderer.domElement.style.opacity = '0';
-    }  
+    // if (loadedModel.scene.rotation.y-rad > Math.PI * 0.5 && loadedModel.scene.rotation.y-rad < Math.PI * 1.5 && loadedModel.scene.position.x >= 0) {
+    //   cssObj.element.style.opacity = '1';
+    //   cssCamObj.element.style.opacity = '1';
+    //   cssHtml.element.style.opacity = '1';
+    //   // cssRenderer.domElement.style.opacity = '1';
+    // } else if (loadedModel.scene.rotation.y+rad > Math.PI * 0.5 && loadedModel.scene.rotation.y+rad < Math.PI * 1.5 && loadedModel.scene.position.x < 0) {
+    //   cssObj.element.style.opacity = '1';
+    //   cssCamObj.element.style.opacity = '1';
+    //   cssHtml.element.style.opacity = '1';
+    //   // cssRenderer.domElement.style.opacity = '1';
+    // } else {
+    //   cssObj.element.style.opacity = '0';
+    //   cssCamObj.element.style.opacity = '0';
+    //   cssHtml.element.style.opacity = '0';
+    //   // cssRenderer.domElement.style.opacity = '0';
+    // }  
 
     logic();
   }
@@ -192,6 +174,19 @@ animate();
 
 function logic() {
   playAnimation();
+  if (isFacingCamera()) {
+    cssObj.element.style.opacity = '1';
+    cssCamObj.element.style.opacity = '1';
+    cssHtml.element.style.opacity = '1';
+    // cssRenderer.domElement.style.opacity = '1';
+  } else {
+    cssObj.element.style.opacity = '0';
+    cssCamObj.element.style.opacity = '0';
+    cssHtml.element.style.opacity = '0';
+    // cssRenderer.domElement.style.opacity = '0';
+  }
+  // loadedModel.scene.rotation.x += 0.01;
+  // loadedModel.scene.rotation.y += 0.01;
 }
 
 // animation section
@@ -220,38 +215,6 @@ for (let i = 1; i < getPosition().length; i++) {
       },
     })
 }
-
-// animationScripts.push({
-//   start: 0,
-//   end: 100,
-//   func: () => {
-//       camera.position.set(0, 1, 45)
-//       loadedModel.scene.position.z = lerp(0, 8, scalePercent(0, 100))
-//       loadedModel.scene.position.x = lerp(0, -20, scalePercent(0, 100))
-//       loadedModel.scene.position.y = lerp(0, 8, scalePercent(0, 100))
-
-//       loadedModel.scene.rotation.y = lerp(-getAngleToMiddle(), getAngleToMiddle(), scalePercent(0, 100));
-//       loadedModel.scene.rotation.z = lerp(0, -Math.PI / 2, scalePercent(0, 100));
-//       console.log(scrollPercent)
-//       //console.log(cube.position.z)
-//   },
-// })
-
-// animationScripts.push({
-//   start: 100,
-//   end: 200,
-//   func: () => {
-//       camera.position.set(0, 1, 45)
-//       loadedModel.scene.position.z = lerp(8, 0, scalePercent(100, 200))
-//       loadedModel.scene.position.x = lerp(-20, 0, scalePercent(100, 200))
-//       loadedModel.scene.position.y = lerp(8, 0, scalePercent(100,200))
-
-//       loadedModel.scene.rotation.y = getAngleToMiddle();
-//       loadedModel.scene.rotation.z = lerp(-Math.PI / 2, 0, scalePercent(100, 200));
-//       console.log(scrollPercent)
-//       //console.log(cube.position.z)
-//   },
-// })
 
 function playAnimation() {
   animationScripts.forEach((script) => {
