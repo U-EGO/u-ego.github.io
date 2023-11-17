@@ -16,6 +16,8 @@ const viewportHeight = window.innerHeight;
 // Set the scroll position to the top of the active section
 window.scrollTo(0, activeSection.offsetTop);
 
+let currentSec = 0;
+
 // Listen for scroll events
 window.addEventListener('scroll', () => {
   // Calculate the distance from the top of the viewport to the top of each section
@@ -26,9 +28,6 @@ window.addEventListener('scroll', () => {
 
   // Set the active section to the section with the smallest distance
   activeSection = sections[minIndex];
-
-  // Set the scroll position to the top of the active section
-  // window.scrollTo(0, activeSection.offsetTop);
 
   // add the dsel id to sidenav li element of the active section
   let nav = document.getElementById("sidenav");
@@ -57,6 +56,10 @@ window.addEventListener('scroll', () => {
     ftitle.classList.remove("fsticky");
     ftitle.style.display = "none";
   }
+});
+
+window.addEventListener('scroll', () => {
+  
 });
 
 export function getActiveSection() {
