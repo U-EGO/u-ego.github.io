@@ -11,11 +11,11 @@ const position = [
         cam_rotateX: 0,
         cam_rotateY: 0,
         cam_rotateZ: 0,
-        x: 0,
+        x: 20,
         y: 0,
         z: 0,
         rotateX: 0,
-        rotateY: -getAngleToMiddleCords(0,45),
+        rotateY: -getAngleToMiddleCords(-20,45),
         rotateZ: 0,
         scale: 1
     },
@@ -178,6 +178,24 @@ const position = [
         z: -30,
         rotateX: 0,
         rotateY: getAngleToMiddleCords(-20, 45),
+        rotateZ: 0,
+        scale: 1
+    },
+    {
+        start: 900,
+        end: 925,
+        id: "feature1",
+        cam_x: 0,
+        cam_y: 1,
+        cam_z: 45,
+        cam_rotateX: 0,
+        cam_rotateY: 0,
+        cam_rotateZ: 0,
+        x: 150,
+        y: 100,
+        z: 0,
+        rotateX: 0,
+        rotateY: 8*getAngleToMiddleCords(150, 45),
         rotateZ: 0,
         scale: 1
     }

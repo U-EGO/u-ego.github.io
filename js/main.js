@@ -1,3 +1,5 @@
+import { getPosition } from "./animeation.js";
+
 var navbar = document.getElementById("header_blend");
 var navb = document.getElementById("header");
 var ftitle = document.getElementById("ftitle");
