@@ -6,8 +6,10 @@
 }
 .subphone{
     /* rotate: 90deg; */
-    width:60%;
-    aspect-ratio: 16 / 9;
+    /* width:60%;
+    aspect-ratio: 16 / 9; */
+
+    height: 100%;
 
     margin:auto;
     background-color: #BDEEE8;
@@ -15,12 +17,14 @@
     display:flex;
     flex-direction:column;
     justify-content:space-around;
+
+    border-radius: 20px;
 }
 
 .subphone h1{
     width:100%;
     height:fit-content;
-    font-size:52px;
+    font-size:24px;
     font-weight:900;
     text-align: center;
     margin:auto;
@@ -52,7 +56,7 @@
     height:fit-content;
     margin:auto;
     text-align: center;
-    font-size:36px;
+    font-size:14px;
     font-weight:900;
     color:#333333;
 }
@@ -61,7 +65,7 @@
     width:80%;
     height:auto;
     margin-left:10%;
-    font-size:20px;
+    font-size:10px;
     font-weight:700;
     color:#333333;
 }
@@ -72,7 +76,7 @@
     margin:auto;
     padding:5% 2%;
     text-align: center;
-    font-size:40px;
+    font-size:20px;
     font-weight:900;
     color:#679191;
     background-color: #FFEECC;

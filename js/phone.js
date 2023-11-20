@@ -36,7 +36,7 @@ phoneCamera.style.backgroundColor = 'rgba(0,0,0)';
 const cssObj = new CSS3DObject( html );
 const cssCamObj = new CSS3DObject( phoneCamera );
 const phoneHtml = document.getElementById("phoneHTML");
-phoneHtml.style.backgroundColor = 'rgba(0,255,0)';
+phoneHtml.style.backgroundColor = 'rgba(0,127,127)';
 const cssHtml = new CSS3DObject( phoneHtml );
 cssObj.add(cssCamObj);
 cssObj.add(cssHtml);
@@ -213,6 +213,17 @@ for (let i = 1; i < getPosition().length; i++) {
           loadedModel.scene.rotation.x = lerp(getPosition()[i - 1].rotateX, getPosition()[i].rotateX, scalePercent(getPosition()[i].start, getPosition()[i].end));
           loadedModel.scene.rotation.y = lerp(getPosition()[i - 1].rotateY, getPosition()[i].rotateY, scalePercent(getPosition()[i].start, getPosition()[i].end));
           loadedModel.scene.rotation.z = lerp(getPosition()[i - 1].rotateZ, getPosition()[i].rotateZ, scalePercent(getPosition()[i].start, getPosition()[i].end));
+
+          if (getPosition()[i].id == "sub"){
+            cssHtml.element.style.height = loadedModel.scene.scale.x * 5200 + 'px';
+            cssHtml.element.style.width = loadedModel.scene.scale.y * 11100 + 'px';
+
+            cssHtml.rotation.z = Math.PI / 2;
+          } else {
+            cssHtml.element.style.width = loadedModel.scene.scale.x * 5200 + 'px';
+            cssHtml.element.style.height = loadedModel.scene.scale.y * 11100 + 'px';
+            cssHtml.rotation.z = 0;
+          }
       },
     })
 }

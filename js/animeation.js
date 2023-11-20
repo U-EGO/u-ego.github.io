@@ -58,7 +58,7 @@ const position = [
     {
         start: 200,
         end: 300,
-        id: "feature1",
+        id: "feature2",
         cam_x: 0,
         cam_y: 1,
         cam_z: 45,
@@ -76,7 +76,7 @@ const position = [
     {
         start: 300,
         end: 400,
-        id: "feature1",
+        id: "feature3",
         cam_x: 0,
         cam_y: 1,
         cam_z: 45,
@@ -94,7 +94,7 @@ const position = [
     {
         start: 400,
         end: 500,
-        id: "feature1",
+        id: "feature4",
         cam_x: 0,
         cam_y: 1,
         cam_z: 45,
@@ -112,7 +112,7 @@ const position = [
     {
         start: 500,
         end: 600,
-        id: "feature1",
+        id: "feature5",
         cam_x: 0,
         cam_y: 1,
         cam_z: 45,
@@ -130,7 +130,7 @@ const position = [
     {
         start: 600,
         end: 700,
-        id: "feature1",
+        id: "sub",
         cam_x: 0,
         cam_y: 1,
         cam_z: 45,
@@ -139,7 +139,7 @@ const position = [
         cam_rotateZ: 0,
         x: 0,
         y: 1,
-        z: 30,
+        z: 32,
         rotateX: 0,
         rotateY: getAngleToMiddleCords(0, 45),
         rotateZ: Math.PI / 2,
