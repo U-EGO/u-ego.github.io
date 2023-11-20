@@ -12,6 +12,52 @@
     border-radius: 20px;
 }
 
+#feature1-phone img {
+    width: 100%;
+    height: 100%;
+    background-color: #BDEEE8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+#feature2-phone img {
+    width: 100%;
+    height: 100%;
+    background-color: #BDEEE8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+#feature3-phone img {
+    width: 100%;
+    height: 100%;
+    background-color: #BDEEE8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+#feature4-phone img {
+    width: 100%;
+    height: 100%;
+    background-color: #BDEEE8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+#feature5-phone img {
+    width: 100%;
+    height: 100%;
+    background-color: #BDEEE8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+
 #contact-phone img {
     border-radius: 100%;
 }
