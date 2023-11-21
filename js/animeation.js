@@ -17,7 +17,8 @@ const position = [
         rotateX: 0,
         rotateY: -getAngleToMiddleCords(-20,45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 0,
@@ -35,7 +36,8 @@ const position = [
         rotateX: 0,
         rotateY: getAngleToMiddleCords(-15, 45),
         rotateZ: -Math.PI / 2,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 100,
@@ -53,7 +55,8 @@ const position = [
         rotateX: 0,
         rotateY: getAngleToMiddleCords(-20, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 200,
@@ -71,7 +74,8 @@ const position = [
         rotateX: 0,
         rotateY: -getAngleToMiddleCords(-20, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 300,
@@ -89,7 +93,8 @@ const position = [
         rotateX: 0,
         rotateY: getAngleToMiddleCords(-20, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 400,
@@ -107,7 +112,8 @@ const position = [
         rotateX: 0,
         rotateY: -getAngleToMiddleCords(-20, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 500,
@@ -125,7 +131,8 @@ const position = [
         rotateX: 0,
         rotateY: getAngleToMiddleCords(-20, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 600,
@@ -143,7 +150,8 @@ const position = [
         rotateX: 0,
         rotateY: getAngleToMiddleCords(0, 45),
         rotateZ: Math.PI / 2,
-        scale: 1
+        scale: 1,
+        screenSideways: true
     },
     {
         start: 700,
@@ -161,7 +169,8 @@ const position = [
         rotateX: 0,
         rotateY: 8*getAngleToMiddleCords(0, 45),
         rotateZ: Math.PI / 2,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 800,
@@ -179,7 +188,8 @@ const position = [
         rotateX: 0,
         rotateY: getAngleToMiddleCords(-20, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     },
     {
         start: 900,
@@ -197,7 +207,8 @@ const position = [
         rotateX: 0,
         rotateY: 8*getAngleToMiddleCords(150, 45),
         rotateZ: 0,
-        scale: 1
+        scale: 1,
+        screenSideways: false
     }
 ]
 
