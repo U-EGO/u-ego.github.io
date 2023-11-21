@@ -1,4 +1,5 @@
 import { getPosition } from "./animeation.js";
+// import * as zen from "./libs/zenscroll-min.js";
 
 var navbar = document.getElementById("header_blend");
 var navb = document.getElementById("header");
@@ -16,7 +17,8 @@ const viewportHeight = window.innerHeight;
 console.log(window.innerHeight, window.innerWidth);
 
 // Set the scroll position to the top of the active section
-window.scrollTo(0, activeSection.offsetTop);
+window.scrollTo(0,activeSection.offsetTop);
+window.scrollTo(0,0);
 
 let currentSec = 0;
 let lastSec = 0;
@@ -53,7 +55,7 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('scroll', () => {
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
 });
 
 // disable completely the scroll
@@ -150,82 +152,82 @@ let down = document.getElementById("down");
 up.addEventListener("click", () => {
   if (currentSec > 0) {
     currentSec--;
-    window.scrollTo(0, currentSec*viewportHeight);
+    window.scrollTo(0,currentSec*viewportHeight);
   }
 });
 
 down.addEventListener("click", () => {
   if (currentSec < sections.length - 1) {
     currentSec++;
-    window.scrollTo(0, currentSec*viewportHeight);
+    window.scrollTo(0,currentSec*viewportHeight);
   }
 });
 
 let h = document.getElementById("h");
 h.addEventListener("click", () => {
   currentSec = 0;
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
 });
 
 let a = document.getElementById("a");
 a.addEventListener("click", () => {
   currentSec = 1;
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
 });
 
 // let f1 = document.getElementById("f1");
 // f1.addEventListener("click", () => {
 //   currentSec = 2;
-//   window.scrollTo(0, currentSec*viewportHeight);
+//   window.scrollTo(0,currentSec*viewportHeight);
 // });
 
 // let f2 = document.getElementById("f2");
 // f2.addEventListener("click", () => {
 //   currentSec = 3;
-//   window.scrollTo(0, currentSec*viewportHeight);
+//   window.scrollTo(0,currentSec*viewportHeight);
 // });
 
 // let f3 = document.getElementById("f3");
 // f3.addEventListener("click", () => {
 //   currentSec = 4;
-//   window.scrollTo(0, currentSec*viewportHeight);
+//   window.scrollTo(0,currentSec*viewportHeight);
 // });
 
 // let f4 = document.getElementById("f4");
 // f4.addEventListener("click", () => {
 //   currentSec = 5;
-//   window.scrollTo(0, currentSec*viewportHeight);
+//   window.scrollTo(0,currentSec*viewportHeight);
 // });
 
 // let f5 = document.getElementById("f5");
 // f5.addEventListener("click", () => {
 //   currentSec = 6;
-//   window.scrollTo(0, currentSec*viewportHeight);
+//   window.scrollTo(0,currentSec*viewportHeight);
 // });
 
 let s = document.getElementById("s");
 s.addEventListener("click", () => {
   currentSec = 7;
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
 });
 
 let t = document.getElementById("t");
 t.addEventListener("click", () => {
   currentSec = 8;
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
 });
 
 let c = document.getElementById("c");
 c.addEventListener("click", () => {
   currentSec = 9;
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
 });
 
 let f = document.getElementById("f");
 let fs = 2;
 f.addEventListener("click", () => {
   currentSec = fs;
-  window.scrollTo(0, currentSec*viewportHeight);
+  window.scrollTo(0,currentSec*viewportHeight);
   fs++;
   if (fs > 6) {
     fs = 2;

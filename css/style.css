@@ -19,6 +19,8 @@ html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  height: 799;
+  width: 1536;
 
   font-family: 'Inter', sans-serif;
 }
@@ -56,6 +58,7 @@ html, body {
 }
 
 #scrollProgress {
+  transform: translateZ(0); 
   position: fixed;
   bottom: 10px;
   left: 10px;
