@@ -220,21 +220,21 @@ for (let i = 1; i < getPosition().length; i++) {
           loadedModel.scene.rotation.y = lerp(getPosition()[i - 1].rotateY, getPosition()[i].rotateY, scalePercent(getPosition()[i].start, getPosition()[i].end));
           loadedModel.scene.rotation.z = lerp(getPosition()[i - 1].rotateZ, getPosition()[i].rotateZ, scalePercent(getPosition()[i].start, getPosition()[i].end));
 
-          if (getPosition()[i].screenSideways && !getPosition()[i-1].screenSideways){
-            cssHtml.rotation.z = lerp(0, Math.PI / 2, scalePercent(getPosition()[i].start, getPosition()[i].end));
-          } else if (!getPosition()[i].screenSideways && getPosition()[i-1].screenSideways) {
-            cssHtml.rotation.z = lerp(Math.PI / 2, 0, scalePercent(getPosition()[i].start, getPosition()[i].end));
-          } else {
-            cssHtml.rotation.z = lerp(cssHtml.rotation.z, 0, scalePercent(getPosition()[i].start, getPosition()[i].end));
-          }
+          // if (getPosition()[i].screenSideways && !getPosition()[i-1].screenSideways){
+          //   cssHtml.rotation.z = lerp(0, Math.PI / 2, scalePercent(getPosition()[i].start, getPosition()[i].end));
+          // } else if (!getPosition()[i].screenSideways && getPosition()[i-1].screenSideways) {
+          //   cssHtml.rotation.z = lerp(Math.PI / 2, 0, scalePercent(getPosition()[i].start, getPosition()[i].end));
+          // } else {
+          //   cssHtml.rotation.z = lerp(cssHtml.rotation.z, 0, scalePercent(getPosition()[i].start, getPosition()[i].end));
+          // }
           
-          if (getPosition()[i].screenSideways){
-            cssHtml.element.style.height = loadedModel.scene.scale.x * 5200 + 'px';
-            cssHtml.element.style.width = loadedModel.scene.scale.y * 11100 + 'px';
-          } else {
-            cssHtml.element.style.width = loadedModel.scene.scale.x * 5200 + 'px';
-            cssHtml.element.style.height = loadedModel.scene.scale.y * 11100 + 'px';
-          }
+          // if (getPosition()[i].screenSideways){
+          //   cssHtml.element.style.height = loadedModel.scene.scale.x * 5200 + 'px';
+          //   cssHtml.element.style.width = loadedModel.scene.scale.y * 11100 + 'px';
+          // } else {
+          //   cssHtml.element.style.width = loadedModel.scene.scale.x * 5200 + 'px';
+          //   cssHtml.element.style.height = loadedModel.scene.scale.y * 11100 + 'px';
+          // }
       },
     })
 }

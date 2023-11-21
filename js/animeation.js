@@ -151,7 +151,7 @@ const position = [
         rotateY: getAngleToMiddleCords(0, 45),
         rotateZ: Math.PI / 2,
         scale: 1,
-        screenSideways: true
+        screenSideways: false
     },
     {
         start: 700,
