@@ -3,6 +3,7 @@
     height:100vh;
     background-color: #CFACCD;
     background-image: url("../img/bg-about.png");
+    background-size: cover;
 }
 
 #about_content{

@@ -105,6 +105,7 @@
 
 #dsidenav {
     position: fixed;
+    right: 0;
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -112,49 +113,36 @@
     z-index: 3;
 }
 
-#dsidenav ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-}
-
-#dsidenav ul li {
-    background-color: #ffffff50;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    transition: 0.2s;
-}
-
-#dsidenav ul li:hover {
-    background-color: #ffffff80;
-    transition: 0.2s;
-}
-
-#dsidenav ul li a {
-    text-decoration: none;
-    margin: auto;
-    line-height: 100%;
+#dsidenav input{
+    /* button css */
+    background-color: #f8a4bc;
+    border: none;
     color: white;
-    display: block;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-#dsel {
-    background-color: rgba(196, 11, 199, 0.314);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
     transition: 0.2s;
 }
+
+#dsidenav input:hover {
+    background-color: #c8849c;
+    transition: 0.2s;
+}
+
+#dsidenav input:focus {
+    outline: none;
+}
+
+#dsidenav input:active {
+    background-color: #c8849c;
+    transform: translateY(4px);
+    transition: 0.2s;
+}
+
 /* #home {
     height: 100vh;
     background-image: url("../img/background-home.png");
