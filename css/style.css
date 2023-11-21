@@ -57,3 +57,52 @@
   z-index: 99;
   font-size: 3vh;
 }
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vh;
+  background-color: #f8a4bc;
+}
+
+#footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#footer ul li {
+  margin: 0 10px;
+}
+
+#footer ul li a {
+  text-decoration: solid;
+  color: black;
+}
+
+#footer ul li a:hover {
+  color: #f8a4bc;
+}
+
+#footer ul li a:active {
+  color: #f8a4bc;
+}
+
+#footer ul li a:visited {
+  color: black;
+}
+
+#footer ul li a:focus {
+  color: #f8a4bc;
+}
+
+#footer ul li a:link {
+  color: black;
+}
