@@ -186,6 +186,10 @@ function logic() {
     cssHtml.element.style.opacity = '0';
     // cssRenderer.domElement.style.opacity = '0';
   }
+  if (getActiveSection() == "feature5") {
+    cssHtml.element.style.width = loadedModel.scene.scale.x * 5200 + 'px';
+    cssHtml.element.style.height = loadedModel.scene.scale.y * 11100 + 'px';
+  }
   // loadedModel.scene.rotation.x += 0.01;
   // loadedModel.scene.rotation.y += 0.01;
 }
@@ -222,7 +226,7 @@ for (let i = 1; i < getPosition().length; i++) {
             cssHtml.rotation.z = lerp(cssHtml.rotation.z, 0, scalePercent(getPosition()[i].start, getPosition()[i].end));
           }
           
-          if (getPosition()[i].id == "sub"){
+          if (getPosition()[i].screenSideways){
             cssHtml.element.style.height = loadedModel.scene.scale.x * 5200 + 'px';
             cssHtml.element.style.width = loadedModel.scene.scale.y * 11100 + 'px';
           } else {
