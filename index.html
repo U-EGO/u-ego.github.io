@@ -7,7 +7,6 @@
     <!-- font on figma -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="js/style/timeline.js" defer></script>
     <link rel="icon" href="img/icon.png" type="image/png" sizes="16x16">
   </head>
   <body>
@@ -49,8 +48,9 @@
             <p>Always wanted to meet people you could hate? Clash got you covered! This unique connection app matches people of opposite interests to create any kind of relation.</p>
           </div>
           <div id="about_timeline_container">
-            <div id="about_timeline_highlight"></div>
             <div id="about_timeline_grid">
+              <div id="about_timeline_highlight">
+              </div>
               <div id="about_timeline_grid_tile1" class="about_timeline_grid_tile"></div>
               <div id="about_timeline_grid_tile2" class="about_timeline_grid_tile"></div>
               <div id="about_timeline_grid_tile3" class="about_timeline_grid_tile"></div>
@@ -271,11 +271,13 @@
     <script type="importmap">
       {
           "imports": {
-          "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
+            "svg-morpheus": "//cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.3.2/svg-morpheus.js",
+            "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
         }
       } 
     </script>
     <script type="module" src="js/phone.js"></script>
+    <script type="module" src="js/style/timeline.js"></script>
   </body>
 </html>

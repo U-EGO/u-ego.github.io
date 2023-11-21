@@ -9,23 +9,22 @@ const next = (i, max) => {
 
 const switchEvent = (i) => {
     if(i == 0){
-        bar.style.left = tileList[0].offsetLeft - 3 + "px";
-        bar.style.width = tileList[0].offsetWidth + 9 + "px";
+        // bar.style.left = tileList[0].offsetLeft - 3 + "px";
+        // bar.style.width = tileList[0].offsetWidth + 9 + "px";
         return;
     }
 
     if(i == eventList.length-1){
-        bar.style.left = tileList[0].offsetLeft - 3 + "px";
-        bar.style.width = tileList[eventList.length-1].offsetWidth + tileList[eventList.length-1].offsetLeft + 9 + "px";
+        // bar.style.left = tileList[0].offsetLeft - 3 + "px";
+        // bar.style.width = tileList[eventList.length-1].offsetWidth + tileList[eventList.length-1].offsetLeft + 9 + "px";
         return;
     }
 
-    bar.style.left = tileList[0].offsetLeft - 3 + "px";
-    bar.style.width = tileList[i].offsetWidth + tileList[i].offsetLeft - tileList[0].offsetLeft + 9 + "px";
+    // bar.style.left = tileList[0].offsetLeft - 3 + "px";
+    // bar.style.width = tileList[i].offsetWidth + tileList[i].offsetLeft - tileList[0].offsetLeft + 9 + "px";
     return;
 }
 
 for(let i = 1; i < eventList.length-1; i++){
     eventList[i].addEventListener("mouseover", () => switchEvent(i));
 }
-

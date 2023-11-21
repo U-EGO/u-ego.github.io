@@ -41,11 +41,28 @@
 #about_timeline_highlight{
     position: absolute;
     height:9px;
-    width:8%;
-    transform:translate(0, -2px);
+    width:0%;
     border-radius:2px;
     background-color: #8888e4;
-    transition:0.3s;
+}
+
+/* animation */
+#about_timeline_highlight{
+    animation-name: about_timeline_highlight;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes about_timeline_highlight {
+    0% {
+        width: 0%;
+        background-color: #ff0000;
+    }
+    100% {
+        width: 85%;
+        background-color: #8888e4;
+    }
 }
 
 #about_timeline_grid{
