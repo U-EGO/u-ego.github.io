@@ -111,6 +111,8 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight)
     cssRenderer.setSize(window.innerWidth, window.innerHeight)
     render()
+    // reload page
+    location.reload();
 }
 
 function render() {
