@@ -67,3 +67,12 @@
     justify-content: space-around;
     border-radius: 20px;
 }
+#about-phone img {
+    width: 100%;
+    height: 100%;
+    background-color: #BDEEE8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+}

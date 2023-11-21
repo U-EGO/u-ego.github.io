@@ -13,6 +13,8 @@ let activeSection = sections[0];
 // Get the height of the viewport
 const viewportHeight = window.innerHeight;
 
+console.log(window.innerHeight, window.innerWidth);
+
 // Set the scroll position to the top of the active section
 window.scrollTo(0, activeSection.offsetTop);
 
