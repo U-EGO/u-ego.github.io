@@ -146,7 +146,7 @@ const position = [
         cam_rotateZ: 0,
         x: 0,
         y: 1,
-        z: 32,
+        z: 30,
         rotateX: 0,
         rotateY: getAngleToMiddleCords(0, 45),
         rotateZ: Math.PI / 2,
