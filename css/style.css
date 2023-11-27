@@ -15,10 +15,17 @@ html, body {
   width: 1536;
 }
 
+/* check if firefox */
+@-moz-document url-prefix() {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   height: 799;
   width: 1536;
 

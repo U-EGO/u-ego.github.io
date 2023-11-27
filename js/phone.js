@@ -246,4 +246,3 @@ function playAnimation() {
       }
   })
 }
-window.scrollTo(0);

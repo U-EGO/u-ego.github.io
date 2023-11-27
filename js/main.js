@@ -233,3 +233,10 @@ f.addEventListener("click", () => {
     fs = 2;
   }
 });
+
+// detect wich browser is used
+let isFirefox = typeof InstallTrigger !== 'undefined';
+
+if (!isFirefox) {
+  alert("Please use Firefox for a better experience");
+}
