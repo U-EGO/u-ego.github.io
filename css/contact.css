@@ -108,3 +108,16 @@
     border:none;
     background-color: #D9D9D9;
 }
+
+@media only screen and (max-width: 1100px) {
+    #contact_container{
+        width:80%;
+        height:90%;
+        margin:auto;
+        position: relative;
+        background-color: #FFD5B8;
+        display:grid;
+        grid-template-columns: 32% 68%;
+        grid-template-rows: 25% 75%;
+    }
+}

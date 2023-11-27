@@ -13,21 +13,49 @@
     gap:15px;
 }
 
-#home_title{
-    font-size: 56px;
-    font-weight:900;
-    width:50%;
-    text-align: right;
-    color:#D7FFFF;
-    text-shadow:-2px -2px 0 #809B9B;
-    margin-top:10%;
-    margin-right:50%;
+@media only screen and (max-width: 1100px) {
+    #phoneHTML{
+        display:none;
+    }
+    #home_title{
+        font-size: 56px;
+        font-weight:900;
+        width:50%;
+        text-align: center;
+        color:#D7FFFF;
+        text-shadow:-2px -2px 0 #809B9B;
+        margin-top:10%;
+        margin-left:0%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #home_slogan{
+        font-size: 24px;
+        font-weight:700;
+        color:#333333;
+        margin-bottom:10%;
+        margin-right:0%;
+    }
 }
 
-#home_slogan{
-    font-size: 24px;
-    font-weight:700;
-    color:#333333;
-    margin-bottom:10%;
-    margin-right:50%;
+@media only screen and (min-width: 1100px) {
+    #home_title{
+        font-size: 56px;
+        font-weight:900;
+        width:50%;
+        text-align: right;
+        color:#D7FFFF;
+        text-shadow:-2px -2px 0 #809B9B;
+        margin-top:10%;
+        margin-right:50%;
+    }
+    
+    #home_slogan{
+        font-size: 24px;
+        font-weight:700;
+        color:#333333;
+        margin-bottom:10%;
+        margin-right:50%;
+    }
 }

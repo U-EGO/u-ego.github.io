@@ -14,7 +14,7 @@ let activeSection = sections[0];
 // Get the height of the viewport
 const viewportHeight = window.innerHeight;
 
-console.log(window.innerHeight, window.innerWidth);
+// console.log(window.innerHeight, window.innerWidth);
 
 // Set the scroll position to the top of the active section
 window.scrollTo(0,activeSection.offsetTop);
@@ -54,9 +54,11 @@ window.addEventListener('scroll', () => {
   }
 });
 
+if (window.innerWidth >= 1100) {
 window.addEventListener('scroll', () => {
   window.scrollTo(0,currentSec*viewportHeight);
 });
+}
 
 // disable completely the scroll
 window.addEventListener('wheel', (e) => {
